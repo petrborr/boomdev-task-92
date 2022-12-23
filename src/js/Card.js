@@ -40,7 +40,8 @@ export default class Card extends EventEmitter {
     this.container.innerHTML = template;
     this.on(Card.events.ADD_TO_CART, function listener(price, type) {
       const notification = new Notification()
-      notification.render(price, type)
+      let args = {price: price, type: type}
+      notification.render(args)
     })
     this.container.addEventListener("click", () => {
       this.emit(Card.events.ADD_TO_CART, 
